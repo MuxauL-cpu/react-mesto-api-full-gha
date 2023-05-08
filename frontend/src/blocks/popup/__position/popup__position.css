@@ -1,0 +1,13 @@
+.popup__position {
+  position: relative;
+  width: max-content;
+  justify-content: center;
+  display: flex;
+}
+
+@media screen and (max-width: 510px) {
+  .popup__position {
+    width: 282px;
+    max-height: 330px;
+  }
+}

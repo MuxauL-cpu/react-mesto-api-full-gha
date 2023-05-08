@@ -1,0 +1,27 @@
+.profile__button {
+  width: 25px;
+  height: 25px;
+  background-image: url(../../../images/button_edit.svg);
+  background-color: #000;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 10px 10px;
+  border: 1px solid #FFFFFF;
+  align-self: center;
+  cursor: pointer;
+}
+
+.profile__button:hover {
+  opacity: 0.6;
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in;
+}
+
+@media screen and (max-width: 700px) {
+  .profile__button {
+    width: calc(18px + (25 - 18) * ((100vw - 320px) / (700 - 320)));
+    height: calc(18px + (25 - 18) * ((100vw - 320px) / (700 - 320)));
+    background-size: 7.5px 7.5px;
+  }
+}

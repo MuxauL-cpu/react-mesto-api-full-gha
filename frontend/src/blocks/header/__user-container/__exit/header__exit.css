@@ -1,0 +1,21 @@
+.header__exit {
+  color: #fff;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  cursor: pointer;
+  text-decoration: none;
+  align-self: center;
+  padding-right: 30px;
+  color: #A9A9A9;
+}
+
+@media screen and (max-width: 320px) {
+  .header__exit {
+    font-size: 18px;
+    line-height: 22px;
+    padding-left: 30px;
+  }
+}

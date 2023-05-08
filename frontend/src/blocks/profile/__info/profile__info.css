@@ -1,0 +1,18 @@
+.profile__info {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  margin-top: 19px;
+}
+
+@media screen and (max-width: 700px) {
+  .profile__info {
+    margin-top: 0;
+    align-self: center;
+    flex-shrink: 0;
+    column-gap: 10px;
+    text-align: center;
+    max-width: 282px;
+    display: grid;
+  }
+}

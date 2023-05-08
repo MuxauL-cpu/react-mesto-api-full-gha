@@ -1,0 +1,20 @@
+.header__burger-menu {
+  display: none;
+  margin-right: 30px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.header__burger-menu:hover {
+  opacity: 0.6;
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in;
+}
+
+@media screen and (max-width: 320px) {
+    .header__burger-menu {
+      display: block;
+    }
+  }

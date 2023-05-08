@@ -1,0 +1,26 @@
+.header__route {
+  color: #fff;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  cursor: pointer;
+  text-decoration: none;
+  align-self: center;
+  padding-right: 30px;
+}
+
+.header__route:hover {
+  opacity: 0.6;
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in;
+}
+
+@media screen and (max-width: 320px) {
+    .header__route {
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }

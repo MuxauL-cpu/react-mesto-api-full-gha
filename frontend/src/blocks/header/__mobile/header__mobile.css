@@ -1,0 +1,5 @@
+@media screen and (max-width: 320px) {
+  .header__mobile {
+    margin-top: 142px;
+  }   
+}

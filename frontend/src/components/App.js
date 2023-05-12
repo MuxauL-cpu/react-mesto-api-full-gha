@@ -99,7 +99,7 @@ function App() {
         .then((res) => {
           if (res) {
             setLoggedIn(true);
-            setUserEmail(res.data.email);
+            setUserEmail(res.email);
           }
         })
         .catch((error) => { console.log(error) });
@@ -177,6 +177,7 @@ function App() {
 
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
+    console.log(isLiked)
     
     api.createLike(card._id, !isLiked).then((newCard) => {
       setCard((state) => state.map((c) => c._id === card._id ? newCard : c));

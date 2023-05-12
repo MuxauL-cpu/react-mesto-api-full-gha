@@ -29,7 +29,7 @@ class Api {
   }
 
   deleteLike(id) {
-    return fetch(`${this._url}/cards/likes/${id}`, {
+    return fetch(`${this._url}/cards/${id}/likes`, {
       headers: this._headers,
       method: "DELETE",
     })
@@ -37,7 +37,7 @@ class Api {
   }
 
   createLike(id, isLiked) {
-    return fetch(`${this._url}/cards/likes/${id}`, {
+    return fetch(`${this._url}/cards/${id}/likes`, {
       headers: this._headers,
       method: isLiked ? "PUT" : "DELETE",
     })
@@ -48,7 +48,7 @@ class Api {
     return fetch(`${this._url}/users/me`, {
       headers: this._headers,
     })
-    .then(this._getResponse)
+    .then((res) => this._getResponse(res))
   }
 
   setUserInfo() {
@@ -78,7 +78,7 @@ class Api {
 
   _getResponse(res) {
     if (!res.ok) {
-      return Promise.reject(`Ошибка: ${res.status}`);
+      return Promise.reject(`Ошибка: ${res.status} ${res.statusText}`);
     }
     return res.json();
   }
@@ -88,6 +88,7 @@ const api = new Api({
   url: "https://api.alimorf.mesto.nomoredomains.monster",
   headers: {
     "Content-type": "application/json",
+    authorization: `Bearer ${localStorage.getItem('jwt')}`
   }
 })
 

@@ -1,7 +1,9 @@
 const allowedCors = [
   'http://localhost:3000',
-  'http://alimorf.mesto.nomoredomains.monster/signin',
-  'https://alimorf.mesto.nomoredomains.monster/signin',
+  'http://alimorf.mesto.nomoredomains.monster/',
+  'https://alimorf.mesto.nomoredomains.monster/',
+  'http://api.alimorf.mesto.nomoredomains.monster/',
+  'https://api.alimorf.mesto.nomoredomains.monster/',
 ];
 
 const cors = (req, res, next) => {

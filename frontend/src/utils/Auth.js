@@ -47,6 +47,6 @@ class Auth {
   }
 }
 
-const auth = new Auth({ url: "http://api.alimorf.mesto.nomoredomains.monster" });
+const auth = new Auth({ url: "https://api.alimorf.mesto.nomoredomains.monster" });
   
 export default auth;

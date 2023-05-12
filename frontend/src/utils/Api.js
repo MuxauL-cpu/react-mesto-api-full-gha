@@ -85,7 +85,7 @@ class Api {
 }
 
 const api = new Api({
-  url: "http://api.alimorf.mesto.nomoredomains.monster",
+  url: "https://api.alimorf.mesto.nomoredomains.monster",
   headers: {
     "Content-type": "application/json",
   }

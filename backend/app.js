@@ -2,8 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
-
 const { errors } = require('celebrate');
+
+const cors = require('./middlewares/cors');
+const logger = require('./middlewares/logger');
 const auth = require('./middlewares/auth');
 const routes = require('./routes');
 const { createUser, login } = require('./controllers/users');
@@ -20,6 +22,9 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(cors);
+app.use(logger);
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes

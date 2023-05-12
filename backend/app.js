@@ -5,7 +5,7 @@ const helmet = require('helmet');
 const { errors } = require('celebrate');
 
 const cors = require('./middlewares/cors');
-const logger = require('./middlewares/logger');
+const { requestLogger } = require('./middlewares/logger');
 const auth = require('./middlewares/auth');
 const routes = require('./routes');
 const { createUser, login } = require('./controllers/users');
@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors);
-app.use(logger);
+app.use(requestLogger);
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes

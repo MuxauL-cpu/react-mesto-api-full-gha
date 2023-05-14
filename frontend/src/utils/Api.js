@@ -1,4 +1,4 @@
-class Api {
+export default class Api {
   constructor({ url, headers }) {
     this._url = url;
     this._headers = headers;
@@ -83,13 +83,3 @@ class Api {
     return res.json();
   }
 }
-
-const api = new Api({
-  url: "https://api.alimorf.mesto.nomoredomains.monster",
-  headers: {
-    "Content-type": "application/json",
-    authorization: `Bearer ${localStorage.getItem('jwt')}`
-  }
-})
-
-export default api;

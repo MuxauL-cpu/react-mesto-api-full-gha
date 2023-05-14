@@ -19,7 +19,7 @@ import AddPlacePopup from './AddPlacePopup';
 import PopupWithConfirmation from './PopupWithConfirmation';
 import InfoTooltip from './InfoTooltip';
 
-import api from '../utils/Api';
+import Api from '../utils/Api';
 import auth from '../utils/Auth';
 
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
@@ -56,6 +56,14 @@ function App() {
     isConfirmationOpen
 
   const navigate = useNavigate();
+
+  const api = new Api({
+    url: "https://alimorf.mesto.nomoredomains.monster",
+    headers: {
+      "Content-type": "application/json",
+      authorization: `Bearer ${localStorage.getItem('jwt')}`,
+    },
+  });
 
   function userLogin(email, password) {
     auth.login(email, password)
@@ -99,7 +107,7 @@ function App() {
         .then((res) => {
           if (res) {
             setLoggedIn(true);
-            setUserEmail(res.email);
+            console.log(loggedIn)
           }
         })
         .catch((error) => { console.log(error) });
@@ -119,6 +127,7 @@ function App() {
           const [userData, cardsData] = data;
 
           setCurrentUser(userData);
+          setUserEmail(userData.email);
 
           setCard(cardsData)
         })
@@ -129,9 +138,10 @@ function App() {
   }, [loggedIn]);
 
   function signOut(){
-    localStorage.removeItem('jwt');
     setLoggedIn(false);
     setBurgerOpen(false);
+    setUserEmail('');
+    localStorage.removeItem('jwt');
     navigate('/sign-in');
   }
 
@@ -177,7 +187,6 @@ function App() {
 
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
-    console.log(isLiked)
     
     api.createLike(card._id, !isLiked).then((newCard) => {
       setCard((state) => state.map((c) => c._id === card._id ? newCard : c));

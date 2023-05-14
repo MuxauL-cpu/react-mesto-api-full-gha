@@ -58,7 +58,7 @@ function App() {
   const navigate = useNavigate();
 
   const api = new Api({
-    url: "https://alimorf.mesto.nomoredomains.monster",
+    url: "https://api.alimorf.mesto.nomoredomains.monster",
     headers: {
       "Content-type": "application/json",
       authorization: `Bearer ${localStorage.getItem('jwt')}`,

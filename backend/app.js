@@ -25,7 +25,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors);
 app.use(requestLogger);
-app.use(errorLogger);
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -43,6 +42,7 @@ app.post('/signup', createUserValidation, createUser);
 app.use(auth);
 app.use(routes);
 
+app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
 

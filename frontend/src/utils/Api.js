@@ -36,7 +36,7 @@ export default class Api {
     .then(this._getResponse)
   }
 
-  createLike(id, isLiked) {
+  toggleLike(id, isLiked) {
     return fetch(`${this._url}/cards/${id}/likes`, {
       headers: this._headers,
       method: isLiked ? "PUT" : "DELETE",

@@ -1,7 +1,7 @@
 import succeed from '../images/success-icon.svg';
 import failure from '../images/fail-icon.svg';
 
-import { useEffect, useState, Provider } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import Header from './Header';
@@ -47,13 +47,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   const [loggedIn, setLoggedIn] = useState(false);
-
-  const isOpen = isAddCardFormOpen || 
-    isProfileEditOpen || 
-    isUserAvatarFormOpen || 
-    isCardOpen || 
-    isInfoTooltipOpen || 
-    isConfirmationOpen
 
   const navigate = useNavigate();
 
@@ -107,7 +100,6 @@ function App() {
         .then((res) => {
           if (res) {
             setLoggedIn(true);
-            console.log(loggedIn)
           }
         })
         .catch((error) => { console.log(error) });
@@ -118,7 +110,7 @@ function App() {
     if (loggedIn) {
       navigate('/');
     }
-  }, [loggedIn])
+  }, [loggedIn, navigate])
 
   useEffect(() => {
     if (loggedIn) {
@@ -186,9 +178,9 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
     
-    api.createLike(card._id, !isLiked).then((newCard) => {
+    api.toggleLike(card._id, !isLiked).then((newCard) => {
       setCard((state) => state.map((c) => c._id === card._id ? newCard : c));
     })
     .catch((error) => {

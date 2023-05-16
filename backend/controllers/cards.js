@@ -62,6 +62,7 @@ const putLike = (req, res, next) => {
       new: true,
     },
   )
+    .populate(['owner', 'likes'])
     .orFail(() => {
       throw new NotFoundError('Карточка с данным id не найдена.');
     })
@@ -82,6 +83,7 @@ const deleteLike = (req, res, next) => {
       new: true,
     },
   )
+    .populate(['owner', 'likes'])
     .orFail(() => {
       throw new NotFoundError('Карточка с данным id не найдена.');
     })
